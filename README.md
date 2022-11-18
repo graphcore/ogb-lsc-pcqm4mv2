@@ -2,7 +2,7 @@
 
 An optimised hybrid GNN/Transformer model for molecular property prediction using Graphcore IPUs, trained on the [PCQM4Mv2](https://arxiv.org/abs/2103.09430) dataset. The flexible hybrid model closely follows the [General, Powerful, Scalable (GPS) framework](https://arxiv.org/abs/2205.12454) and combines the benefits of both message passing and attention layers for graph-structured input data training.
 
-## Running the model
+## Running the model [![Gradient](https://assets.paperspace.io/img/gradient-badge.svg)](https://console.paperspace.com/github/graphcore/ogb-lsc-pcqm4mv2?machine=Free-IPU-POD16&container=graphcore%2Ftensorflow-jupyter%3A2-amd-3.0.0-ubuntu-18.04-20221025&file=%2Fnotebook_inference.ipynb)
 
 ### Setup
 
@@ -27,7 +27,14 @@ make -C data_utils/feature_generation
 make -C static_ops
 ```
 
+This project uses Weights & Biases to track experiments. If you don't have a Weights & Biases account, set the wandb mode to `offline`.
+
+```shell
+wandb offline
+```
+
 ### Dataset
+
 The [PCQM4Mv2](https://arxiv.org/abs/2103.09430) dataset is a recently published dataset for the OGB Large Scale Challenge built to aide the development of state-of-the-art machine learning models for molecular property prediction. The task is for the quantum chemistry task of predicting the [HOMO-LUMO energy gap](https://en.wikipedia.org/wiki/HOMO_and_LUMO) of a molecule.
 
 The dataset consists of 3.7 million molecules defined by their SMILES strings which can simply be represented as a graph with nodes and edges. 
@@ -45,6 +52,7 @@ Then run with the following command:
 ```shell
 python3 run_training.py --config configs/<CONFIG_FILE>
 ```
+
 After training has finished inference will follow and show the validation results on the validation dataset.
 
 To run inference separately and on other dataset splits, use the following command, changing the `--inference_fold` flag:
@@ -67,6 +75,7 @@ We have provided three configurations of our model of increasing size trained on
 | GPS++ trained on valid split | 44M |  16 | ~0.044 | NA | GPS_PCQ_16gps_44M.yaml | [gps++ ckpt2](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_16gps_44M_inc_valid.tar.gz) |
 
 ## Our submission to OGB-LSC PCQM4Mv2
+
 For the OGB-LSC PCQM4Mv2 challenge submission we trained an ensemble of the GPS++ (44M) model with six adjustments to the hyperparameters to form seven different model configurations.
 
 Additionally, we trained the models on the training and validation data. The directory pcqm4mv2-cross_val_splits contains such split options and they can be used by modifying the flag `--split_mode`.
@@ -74,10 +83,12 @@ Additionally, we trained the models on the training and validation data. The dir
 In total 112 models were ensembled and achieved an MAE of 0.0719 on the test-challenge set.
 
 ## Logging and visualisation in Weights & Biases
-This project supports Weights & Biases, a platform to keep track of machine learning experiments. To enable this, use the `--wandb` flag. 
+
+This project supports Weights & Biases, a platform to keep track of machine learning experiments. To enable this, use the `--wandb` flag.
 
 The user will need to manually log in (see the quickstart guide [here](https://docs.wandb.ai/quickstart)) and configure these additional arguments:
-- `--wandb_entity` (default `ogb-lsc-comp`) 
+
+- `--wandb_entity` (default `ogb-lsc-comp`)
 - `--wandb_projecy` (default `PCQM4Mv2`)
 
 For more information please see https://www.wandb.com/.

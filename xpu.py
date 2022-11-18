@@ -78,6 +78,7 @@ def configure_and_get_strategy(num_replicas, num_ipus_per_replica, cfg, stochast
         config.scheduling.algorithm = vars(ipu.config.SchedulingAlgorithm)[cfg.ipu_opts.scheduling_algorithm]
         config.optimizations.maximum_cross_replica_sum_buffer_size = cfg.ipu_opts.maximum_cross_replica_sum_buffer_size
         config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
+        config.device_connection.version = "ipu2"
         config.device_connection.enable_remote_buffers = True
 
         if stochastic_rounding:
