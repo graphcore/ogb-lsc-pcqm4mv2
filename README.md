@@ -2,11 +2,11 @@
 
 An optimised hybrid GNN/Transformer model for molecular property prediction using Graphcore IPUs, trained on the [PCQM4Mv2](https://arxiv.org/abs/2103.09430) dataset. The flexible hybrid model closely follows the [General, Powerful, Scalable (GPS) framework](https://arxiv.org/abs/2205.12454) and combines the benefits of both message passing and attention layers for graph-structured input data training.
 
-## Running the model [![Gradient](https://assets.paperspace.io/img/gradient-badge.svg)](https://console.paperspace.com/github/graphcore/ogb-lsc-pcqm4mv2?machine=Free-IPU-POD16&container=graphcore%2Ftensorflow-jupyter%3A2-amd-3.0.0-ubuntu-18.04-20221025&file=%2Fnotebook_inference.ipynb)
+## Running the model [![Gradient](https://assets.paperspace.io/img/gradient-badge.svg)](https://console.paperspace.com/github/graphcore/ogb-lsc-pcqm4mv2?machine=Free-IPU-POD16&container=graphcore%2Ftensorflow-jupyter%3Aogb-competition-2022-11-21&file=%2Fnotebook_inference.ipynb)
 
 ### Setup
 
-This model is optimised for Graphcore IPUs and requires the Graphcore's Poplar SDK to run.
+This model is optimised for Graphcore IPUs and requires the Graphcore's Poplar SDK to run. You can access IPUs through [Paperspace](https://www.paperspace.com/graphcore), using the button above, or [G-Core](https://gcore.com/partners/graphcore).
 
 Create a virtual environment and install the Poplar SDK, including the TensorFlow 2 wheels from inside the SDK directory:
 
