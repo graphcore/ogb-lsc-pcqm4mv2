@@ -2,7 +2,7 @@
 
 An optimised hybrid GNN/Transformer model for molecular property prediction using Graphcore IPUs, trained on the [PCQM4Mv2](https://arxiv.org/abs/2103.09430) dataset. The flexible hybrid model closely follows the [General, Powerful, Scalable (GPS) framework](https://arxiv.org/abs/2205.12454) and combines the benefits of both message passing and attention layers for graph-structured input data training.
 
-## Running the model [![Gradient](https://assets.paperspace.io/img/gradient-badge.svg)](https://console.paperspace.com/github/graphcore/ogb-lsc-pcqm4mv2?machine=Free-IPU-POD16&container=graphcore%2Ftensorflow-jupyter%3Aogb-competition-2022-11-21&file=%2Fnotebook_inference.ipynb)
+## Running the model [![Gradient](https://assets.paperspace.io/img/gradient-badge.svg)](https://ipu.dev/3FwVoLD)
 
 ### Setup
 
@@ -37,7 +37,7 @@ wandb offline
 
 The [PCQM4Mv2](https://arxiv.org/abs/2103.09430) dataset is a recently published dataset for the OGB Large Scale Challenge built to aide the development of state-of-the-art machine learning models for molecular property prediction. The task is for the quantum chemistry task of predicting the [HOMO-LUMO energy gap](https://en.wikipedia.org/wiki/HOMO_and_LUMO) of a molecule.
 
-The dataset consists of 3.7 million molecules defined by their SMILES strings which can simply be represented as a graph with nodes and edges. 
+The dataset consists of 3.7 million molecules defined by their SMILES strings which can simply be represented as a graph with nodes and edges.
 
 The dataset includes four splits: train, valid, test-challenge and test-dev. The train and valid splits have true label and can be used for model development. The test-challenge split is used for the OGB-LSC PCQM4Mv2 challenge submission and test-dev for the [leaderboard](https://ogb.stanford.edu/docs/lsc/leaderboards/#pcqm4mv2) submission.
 
@@ -70,7 +70,7 @@ We have provided three configurations of our model of increasing size trained on
 | Model config | Parameters | No. layers | Train MAE | Valid MAE | Config file name | Checkpoint |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | GPS++ 11M | 11M | 4 | ~0.075 | ~0.090 | GPS_PCQ_4gps_11M.yaml | [11M ckpt](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_4gps_11M.tar.gz) |
-| GPS++ 22M | 22M | 8 | ~0.056 | ~0.082 | GPS_PCQ_8gps_22M.yaml | [22M ckpt](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_8gps_22M.tar.gz) | 
+| GPS++ 22M | 22M | 8 | ~0.056 | ~0.082 | GPS_PCQ_8gps_22M.yaml | [22M ckpt](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_8gps_22M.tar.gz) |
 | GPS++ | 44M |  16 | ~0.044 | ~0.077 | GPS_PCQ_16gps_44M.yaml | [gps++ ckpt1](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_16gps_44M.tar.gz) |
 | GPS++ trained on valid split | 44M |  16 | ~0.044 | NA | GPS_PCQ_16gps_44M.yaml | [gps++ ckpt2](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_16gps_44M_inc_valid.tar.gz) |
 
