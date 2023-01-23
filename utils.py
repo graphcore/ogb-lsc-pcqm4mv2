@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import logging
 import time
@@ -13,7 +13,7 @@ from tensorflow.keras import metrics as metrics_mod
 import random
 
 import numpy as np
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 import xpu
 
 
@@ -174,7 +174,7 @@ def options_validator(cfg):
 
 
 def set_random_seeds(seed=42):
-    ipu.utils.reset_ipu_seed(seed)
+    XXXX-1.utils.reset_ipu_seed(seed)
     np.random.seed(seed)
     random.seed(seed)
     tf.random.set_seed(seed)

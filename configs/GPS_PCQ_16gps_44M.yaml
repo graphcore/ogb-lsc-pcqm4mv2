@@ -115,7 +115,7 @@ wandb: true
 wandb_entity: ogb-lsc-comp
 wandb_project: PCQM4Mv2
 checkpoint_every_n_epochs: 1000
-ipu_opts:
+XXXX-12:
   replicas: 4
   num_pipeline_stages: 4
   recompute: true

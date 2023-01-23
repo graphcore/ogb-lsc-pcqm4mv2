@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import dataclasses
 
@@ -7,7 +7,7 @@ import numpy as np
 import pytest
 import tensorflow as tf
 import tqdm
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 
 from model.gnn.aggregators import (_gather, _scatter_max, _scatter_mean, _scatter_softmax, _scatter_sqrtN, _scatter_sum)
 
@@ -25,10 +25,10 @@ class Flags:
 def test_grouped_scatter_gather():
     FLAGS = Flags()
 
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     gather_grads = dict()
     scatter_grads = dict()
@@ -63,10 +63,10 @@ def test_grouped_scatter_gather():
 def test_grouped_scatter_max():
     FLAGS = Flags()
 
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     scatter_grads = dict()
 
@@ -99,10 +99,10 @@ def test_grouped_scatter_max():
 def test_grouped_scatter_softmax():
     FLAGS = Flags()
 
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     scatter_grads = dict()
 
@@ -135,10 +135,10 @@ def test_grouped_scatter_softmax():
 def test_grouped_scatter_mean():
     FLAGS = Flags()
 
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     scatter_grads = dict()
 
@@ -170,10 +170,10 @@ def test_grouped_scatter_mean():
 def test_grouped_scatter_sqrtN():
     FLAGS = Flags()
 
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     scatter_grads = dict()
 

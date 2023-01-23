@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 # Copyright (c) 2019 OGB Team
 #
 # MIT License
@@ -21,7 +21,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# This file has been modified by Graphcore Ltd.
+# This file has been modified by XXXX-6 Ltd.
 
 import logging
 import tarfile
@@ -453,9 +453,9 @@ class CustomPCQM4Mv2Dataset(PCQM4Mv2Dataset):
 
         # Old url hosted at Stanford
         # md5sum: 65b742bafca5670be4497499db7d361b
-        # self.url = f'http://ogb-data.stanford.edu/data/lsc/pcqm4m-v2.zip'
+        # self.url = f'XXXX'
         # New url hosted by DGL team at AWS--much faster to download
-        self.url = 'https://dgl-data.s3-accelerate.amazonaws.com/dataset/OGB-LSC/pcqm4m-v2.zip'
+        self.url = 'XXXX'
 
         # check version and update if necessary
         if not self.ensemble:
@@ -529,7 +529,7 @@ class CustomPCQM4Mv2Dataset(PCQM4Mv2Dataset):
                     logging.info("3D molecule file pcqm4m-v2-train.sdf already exists")
                 else:
                     logging.info("3D molecule file pcqm4m-v2-train.sdf does not exist and will be downloaded")
-                    download_url('http://ogb-data.stanford.edu/data/lsc/pcqm4m-v2-train.sdf.tar.gz', self.folder)
+                    download_url('XXXX', self.folder)
                     molecule_file = tarfile.open(osp.join(self.folder, "pcqm4m-v2-train.sdf.tar.gz"))
                     molecule_file.extractall(self.folder)
                     molecule_file.close()

@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import tensorflow as tf
 from keras import backend
@@ -95,8 +95,8 @@ def batch_size(y_true, y_pred, cfg):
     y_true = tf.cast(y_true, tf.float32)  # defensive cast
     y_pred = tf.cast(y_pred, tf.float32)  # defensive cast
     mask = tf.where(y_true == -1, tf.cast(0, y_true.dtype), tf.cast(1, y_true.dtype))
-    return cfg.ipu_opts.replicas*\
-           cfg.ipu_opts.gradient_accumulation_factor*\
+    return cfg.XXXX-12.replicas*\
+           cfg.XXXX-12.gradient_accumulation_factor*\
            backend.sum(mask)
 
 

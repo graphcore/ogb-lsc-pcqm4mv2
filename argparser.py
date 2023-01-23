@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 from email.policy import default
 from random import choices
@@ -434,56 +434,56 @@ def get_parser():
     parser.add_argument("--checkpoint_path", default=None, help="Path to checkpoint file if skipping training.")
     parser.add_argument("--checkpoint_every_n_epochs", default=1, type=int, help="Create checkpoints every N epochs.")
 
-    # ipu options
-    parser.add_argument("--ipu_opts.replicas",
+    # XXXX-1 options
+    parser.add_argument("--XXXX-12.replicas",
                         default=1,
                         type=int,
                         help="The number of replicas to scale the model over.")
-    parser.add_argument("--ipu_opts.gradient_accumulation_factor",
+    parser.add_argument("--XXXX-12.gradient_accumulation_factor",
                         default=1,
                         type=int,
                         help="The number of times to locally accumulate gradients.")
-    parser.add_argument("--ipu_opts.gradient_accumulation_dtype",
+    parser.add_argument("--XXXX-12.gradient_accumulation_dtype",
                         default=None,
                         type=str,
                         help="Dtype to store accumulated gradients in.")
-    parser.add_argument("--ipu_opts.num_pipeline_stages",
+    parser.add_argument("--XXXX-12.num_pipeline_stages",
                         default=1,
                         type=int,
                         help="The number of pipeline stages to use.")
-    parser.add_argument('--ipu_opts.pipeline_stages',
+    parser.add_argument('--XXXX-12.pipeline_stages',
                         type=Optional[List[List[str]]],
                         default=None,
                         help="""Pipeline stages, a list of [enc, hid, dec] layers forming the pipeline.""")
-    parser.add_argument('--ipu_opts.pipeline_device_mapping',
+    parser.add_argument('--XXXX-12.pipeline_device_mapping',
                         type=List[int],
-                        help="""Mapping of pipeline stages to IPU""")
-    parser.add_argument("--ipu_opts.recompute", default=False, type=bool, help="Do recomputation")
-    parser.add_argument("--ipu_opts.offload_optimizer_state",
+                        help="""Mapping of pipeline stages to XXXX-1""")
+    parser.add_argument("--XXXX-12.recompute", default=False, type=bool, help="Do recomputation")
+    parser.add_argument("--XXXX-12.offload_optimizer_state",
                         default=False,
                         type=bool,
                         help="Offload optimizer state to external memory")
 
-    parser.add_argument("--ipu_opts.RTS", default=False, type=bool, help="Turn on replicated optimizer state sharding")
+    parser.add_argument("--XXXX-12.RTS", default=False, type=bool, help="Turn on replicated optimizer state sharding")
 
-    parser.add_argument("--ipu_opts.available_memory_proportion",
+    parser.add_argument("--XXXX-12.available_memory_proportion",
                         default=[0.2],
                         type=List[float],
                         help="memory proportion to reserve for matmuls")
-    parser.add_argument("--ipu_opts.optimization_target",
+    parser.add_argument("--XXXX-12.optimization_target",
                         default="cycles",
                         choices=["balanced", "cycles", "memory"],
                         help="optimization target for the planner")
-    parser.add_argument("--ipu_opts.scheduling_algorithm",
+    parser.add_argument("--XXXX-12.scheduling_algorithm",
                         default="CHOOSE_BEST",
                         choices=["CHOOSE_BEST", "SHORTEST_PATH", "CLUSTERING", "POST_ORDER", "LOOK_AHEAD"],
                         help="the schedling algorithm to use.")
-    parser.add_argument("--ipu_opts.maximum_cross_replica_sum_buffer_size",
+    parser.add_argument("--XXXX-12.maximum_cross_replica_sum_buffer_size",
                         default=1000000,
                         type=int,
                         help="max size of the cross-replica sum buffer")
-    parser.add_argument("--ipu_opts.fp_exceptions", default=False, type=bool, help="Turn on floating point exceptions.")
-    parser.add_argument("--ipu_opts.nanoo", default=False, type=bool, help="Turn on NaN on overflow.")
+    parser.add_argument("--XXXX-12.fp_exceptions", default=False, type=bool, help="Turn on floating point exceptions.")
+    parser.add_argument("--XXXX-12.nanoo", default=False, type=bool, help="Turn on NaN on overflow.")
 
     # Layers Options
     parser.add_argument("--layer.rn_multiplier",

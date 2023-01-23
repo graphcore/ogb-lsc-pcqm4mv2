@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 from pathlib import Path
 import pytest
@@ -60,19 +60,19 @@ class TestHybrid(SubProcessChecker):
                     "--wandb_entity=ogb-lsc-comp " \
                     "--wandb_project=PCQM4Mv2 " \
                     "--checkpoint_every_n_epochs=5 " \
-                    "--ipu_opts.available_memory_proportion=[0.2] " \
-                    "--ipu_opts.optimization_target=cycles " \
-                    "--ipu_opts.scheduling_algorithm=CHOOSE_BEST " \
-                    "--ipu_opts.maximum_cross_replica_sum_buffer_size=1000000 " \
-                    "--ipu_opts.fp_exceptions=false " \
-                    "--ipu_opts.nanoo=true " \
+                    "--XXXX-12.available_memory_proportion=[0.2] " \
+                    "--XXXX-12.optimization_target=cycles " \
+                    "--XXXX-12.scheduling_algorithm=CHOOSE_BEST " \
+                    "--XXXX-12.maximum_cross_replica_sum_buffer_size=1000000 " \
+                    "--XXXX-12.fp_exceptions=false " \
+                    "--XXXX-12.nanoo=true " \
                     "--dataset.save_to_cache=False "\
 
     def test_hybrid_with_edge_and_global_feature(self):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=true " \
                          "--model.layer_specs MPNN+MHSA+FFN " \
-                         "--ipu_opts.replicas=1 " \
+                         "--XXXX-12.replicas=1 " \
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'laplacian_eig':{'max_freqs':3,'eigvec_norm':'L2'},'random_walk':{'k_steps':[1]},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','lap_eig_vals','lap_eig_vecs','random_walk_landing_probs','shortest_path_distances']"
         output = self.run_command(cmd, WORKING_PATH, ("Total Parameters: 740,381", "Throughput:"))
@@ -83,7 +83,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=true " \
                          "--model.layer_specs MPNN+MHSA+FFN " \
-                         "--ipu_opts.replicas=1 " \
+                         "--XXXX-12.replicas=1 " \
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'laplacian_eig':{'max_freqs':3,'eigvec_norm':'L2'},'random_walk':{'k_steps':[1]},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','lap_eig_vals','lap_eig_vecs','random_walk_landing_probs','shortest_path_distances'] "\
                          "--model.use_noisy_nodes=True --model.noisy_nodes_noise_prob=0.001 --model.noisy_nodes_weight=2.0"
@@ -96,7 +96,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=true " \
                          "--model.layer_specs MPNN+MHSA+FFN " \
-                         "--ipu_opts.replicas=1 " \
+                         "--XXXX-12.replicas=1 " \
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','shortest_path_distances'] "\
                          "--model.use_noisy_nodes=True --model.noisy_nodes_noise_prob=0.001 --model.noisy_nodes_weight=2.0"
@@ -109,7 +109,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=true " \
                          "--model.layer_specs MPNN+MHSA+FFN " \
-                         "--ipu_opts.replicas=1 " \
+                         "--XXXX-12.replicas=1 " \
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','shortest_path_distances'] "\
                          "--model.use_noisy_nodes=True --model.noisy_nodes_noise_prob=0.001 --model.noisy_nodes_weight=2.0 " \
@@ -123,7 +123,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=false " \
                          "--model.use_globals=false " \
                          "--model.layer_specs MPNN+MHSA+FFN " \
-                         "--ipu_opts.replicas=1 " \
+                         "--XXXX-12.replicas=1 " \
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','shortest_path_distances']"
 
@@ -135,7 +135,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=false " \
                          "--model.layer_specs MPNN+MHSA+FFN " \
-                         "--ipu_opts.replicas=1 "\
+                         "--XXXX-12.replicas=1 "\
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','shortest_path_distances']"
 
@@ -147,7 +147,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=true " \
                          "--model.layer_specs MPNN+MHSA+FFN " \
-                         "--ipu_opts.replicas=4 "\
+                         "--XXXX-12.replicas=4 "\
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'laplacian_eig':{'max_freqs':3,'eigvec_norm':'L2'},'random_walk':{'k_steps':[1]},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','lap_eig_vals','lap_eig_vecs','random_walk_landing_probs','shortest_path_distances']"
 
@@ -159,7 +159,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=true " \
                          "--model.layer_specs MPNN " \
-                         "--ipu_opts.replicas=1 "\
+                         "--XXXX-12.replicas=1 "\
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'laplacian_eig':{'max_freqs':3,'eigvec_norm':'L2'},'random_walk':{'k_steps':[1]}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','lap_eig_vals','lap_eig_vecs','random_walk_landing_probs']"
 
@@ -171,7 +171,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=false " \
                          "--model.use_globals=false " \
                          "--model.layer_specs MHSA " \
-                         "--ipu_opts.replicas=1 "\
+                         "--XXXX-12.replicas=1 "\
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','shortest_path_distances']"
 
@@ -183,7 +183,7 @@ class TestHybrid(SubProcessChecker):
         cmd = self.cmd + "--model.use_edges=true " \
                          "--model.use_globals=true " \
                          "--model.layer_specs MPNN+FFN " \
-                         "--ipu_opts.replicas=1 "\
+                         "--XXXX-12.replicas=1 "\
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'laplacian_eig':{'max_freqs':3,'eigvec_norm':'L2'},'random_walk':{'k_steps':[1]}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','lap_eig_vals','lap_eig_vecs','random_walk_landing_probs']"
 
@@ -197,7 +197,7 @@ class TestHybrid(SubProcessChecker):
                          "--model.node_latent=32 " \
                          "--model.layer_specs MPNN+MHSA MPNN " \
                          "--model.graph_dropout_rate=0.1 " \
-                         "--ipu_opts.replicas=1 "\
+                         "--XXXX-12.replicas=1 "\
                          "--dataset.features={'senders_receivers':{},'graph_idxs':{},'laplacian_eig':{'max_freqs':3,'eigvec_norm':'L2'},'random_walk':{'k_steps':[1]},'shortest_path_distances':{}} "\
                          "--inputs=['node_feat','edge_feat','receivers','senders','node_graph_idx','edge_graph_idx','lap_eig_vals','lap_eig_vecs','random_walk_landing_probs','shortest_path_distances']"
 

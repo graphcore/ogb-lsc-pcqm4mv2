@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 from datetime import datetime
 import logging
@@ -13,7 +13,7 @@ import string
 import tensorflow as tf
 import wandb
 import tensorflow.keras.backend as K
-from tensorflow.python.ipu import optimizers
+from tensorflow.python.XXXX-1 import optimizers
 
 import utils
 import xpu
@@ -97,16 +97,16 @@ def main():
                                         input_spec=input_spec)
 
     if cfg.model.target_total_batch_size:
-        if cfg.model.micro_batch_size and (not cfg.ipu_opts.gradient_accumulation_factor):
+        if cfg.model.micro_batch_size and (not cfg.XXXX-12.gradient_accumulation_factor):
             fixed_batch_size = float(cfg.model.micro_batch_size) * \
-                               float(cfg.ipu_opts.replicas) * \
+                               float(cfg.XXXX-12.replicas) * \
                                batch_generator.stats['avg_pack']['graphs']
             new_GA = max(int(round(cfg.model.target_total_batch_size / fixed_batch_size)), 1)
             logging.info(f"Setting gradient_accumulation_factor to {new_GA}")
-            cfg.ipu_opts.gradient_accumulation_factor = new_GA
+            cfg.XXXX-12.gradient_accumulation_factor = new_GA
         else:
-            fixed_batch_size = float(cfg.ipu_opts.gradient_accumulation_factor) * \
-                               float(cfg.ipu_opts.replicas) * \
+            fixed_batch_size = float(cfg.XXXX-12.gradient_accumulation_factor) * \
+                               float(cfg.XXXX-12.replicas) * \
                                batch_generator.stats['avg_pack']['graphs']
             new_micro_batch_size = int(round(cfg.model.target_total_batch_size / fixed_batch_size))
             new_micro_batch_size = max(new_micro_batch_size, 1)
@@ -115,17 +115,17 @@ def main():
             batch_generator.change_micro_batch_size(cfg.model.micro_batch_size)
 
         batch_generator.get_averaged_global_batch_size(cfg.model.micro_batch_size,
-                                                       cfg.ipu_opts.gradient_accumulation_factor, cfg.ipu_opts.replicas)
+                                                       cfg.XXXX-12.gradient_accumulation_factor, cfg.XXXX-12.replicas)
         logging.info(f"Dataset stats: {batch_generator.stats}")
 
-    if cfg.ipu_opts.num_pipeline_stages > 1:
-        round_to = float(2 * cfg.ipu_opts.num_pipeline_stages)
-        new_GA = int(max(round(cfg.ipu_opts.gradient_accumulation_factor / round_to), 1) * round_to)
-        if new_GA != cfg.ipu_opts.gradient_accumulation_factor:
+    if cfg.XXXX-12.num_pipeline_stages > 1:
+        round_to = float(2 * cfg.XXXX-12.num_pipeline_stages)
+        new_GA = int(max(round(cfg.XXXX-12.gradient_accumulation_factor / round_to), 1) * round_to)
+        if new_GA != cfg.XXXX-12.gradient_accumulation_factor:
             logging.info(f"Rounding gradient_accumulation_factor to a multiple of {round_to}: {new_GA}")
-            cfg.ipu_opts.gradient_accumulation_factor = new_GA
+            cfg.XXXX-12.gradient_accumulation_factor = new_GA
             batch_generator.get_averaged_global_batch_size(
-                cfg.model.micro_batch_size, cfg.ipu_opts.gradient_accumulation_factor, cfg.ipu_opts.replicas)
+                cfg.model.micro_batch_size, cfg.XXXX-12.gradient_accumulation_factor, cfg.XXXX-12.replicas)
             logging.info(f"Dataset stats: {batch_generator.stats}")
 
     if cfg.wandb:
@@ -136,10 +136,10 @@ def main():
 
     tf_dataset = batch_generator.get_tf_dataset()
     steps_per_epoch = batch_generator.batches_per_epoch
-    steps_per_execution_per_replica = steps_per_epoch // cfg.ipu_opts.replicas
-    steps_per_execution_per_replica = cfg.ipu_opts.gradient_accumulation_factor * (
-        steps_per_execution_per_replica // cfg.ipu_opts.gradient_accumulation_factor)
-    new_steps_per_epoch = steps_per_execution_per_replica * cfg.ipu_opts.replicas
+    steps_per_execution_per_replica = steps_per_epoch // cfg.XXXX-12.replicas
+    steps_per_execution_per_replica = cfg.XXXX-12.gradient_accumulation_factor * (
+        steps_per_execution_per_replica // cfg.XXXX-12.gradient_accumulation_factor)
+    new_steps_per_epoch = steps_per_execution_per_replica * cfg.XXXX-12.replicas
     if new_steps_per_epoch != steps_per_epoch:
         logging.warning("Steps per epoch has been truncated from"
                         f" {steps_per_epoch} to {new_steps_per_epoch}"
@@ -157,15 +157,15 @@ def main():
         v_dtype=str_dtype_to_tf_dtype(cfg.model.adam_v_dtype),
         clip_value=cfg.model.grad_clip_value,
         loss_scale=cfg.model.loss_scaling,
-        gradient_accumulation_factor=cfg.ipu_opts.gradient_accumulation_factor,
-        replicas=cfg.ipu_opts.replicas,
-        outline_apply_gradients=not cfg.ipu_opts.offload_optimizer_state,  # bug where outlining causes issues
+        gradient_accumulation_factor=cfg.XXXX-12.gradient_accumulation_factor,
+        replicas=cfg.XXXX-12.replicas,
+        outline_apply_gradients=not cfg.XXXX-12.offload_optimizer_state,  # bug where outlining causes issues
     )
 
     # ------------ TRAINING LOOP ---------------
     if cfg.do_training:
-        num_pipeline_stages_training = cfg.ipu_opts.num_pipeline_stages
-        strategy_training = xpu.configure_and_get_strategy(num_replicas=cfg.ipu_opts.replicas,
+        num_pipeline_stages_training = cfg.XXXX-12.num_pipeline_stages
+        strategy_training = xpu.configure_and_get_strategy(num_replicas=cfg.XXXX-12.replicas,
                                                            num_ipus_per_replica=num_pipeline_stages_training,
                                                            cfg=cfg)
         with strategy_training.scope():
@@ -224,13 +224,13 @@ def main():
                 convert_loss_and_metric_reductions_to_fp32(model)
 
             # if the total batch size exceeds the compute batch size
-            if xpu.IS_IPU:
+            if xpu.XXXX-4:
                 model.set_gradient_accumulation_options(
-                    gradient_accumulation_steps_per_replica=cfg.ipu_opts.gradient_accumulation_factor,
+                    gradient_accumulation_steps_per_replica=cfg.XXXX-12.gradient_accumulation_factor,
                     gradient_accumulation_reduction_method=optimizers.GradientAccumulationReductionMethod.RUNNING_MEAN,
-                    dtype=str_dtype_to_tf_dtype(cfg.ipu_opts.gradient_accumulation_dtype or cfg.model.dtype),
-                    offload_weight_update_variables=cfg.ipu_opts.offload_optimizer_state,
-                    replicated_optimizer_state_sharding=cfg.ipu_opts.RTS)
+                    dtype=str_dtype_to_tf_dtype(cfg.XXXX-12.gradient_accumulation_dtype or cfg.model.dtype),
+                    offload_weight_update_variables=cfg.XXXX-12.offload_optimizer_state,
+                    replicated_optimizer_state_sharding=cfg.XXXX-12.RTS)
             model.fit(tf_dataset, steps_per_epoch=steps_per_epoch, epochs=cfg.model.epochs, callbacks=callbacks)
 
     if cfg.checkpoint_path:

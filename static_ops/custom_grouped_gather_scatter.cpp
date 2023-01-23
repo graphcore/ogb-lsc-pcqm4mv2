@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+// Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 #include <exception>
 #include <iostream>
@@ -19,12 +19,12 @@ enum class Operation {
 
 struct Settings {
     Operation operation;
-    poplar::Type type;
+    XXXX-11::Type type;
     unsigned nGroups;
     unsigned tableSize;
     unsigned embeddingSize;
     unsigned lookupSize;
-    poplar::OptionFlags options;
+    XXXX-11::OptionFlags options;
     popops::SlicePlan plan;
 };
 
@@ -43,20 +43,20 @@ std::istream& operator>>(std::istream& in, Operation& operation) {
     return in;
 }
 
-std::istream& operator>>(std::istream& in, poplar::Type& type) {
+std::istream& operator>>(std::istream& in, XXXX-11::Type& type) {
     std::string name;
     in >> name;
     if (name == "float") {
-        type = poplar::FLOAT;
+        type = XXXX-11::FLOAT;
     } else if (name == "half") {
-        type = poplar::HALF;
+        type = XXXX-11::HALF;
     } else {
         in.setstate(std::ios::badbit);
     }
     return in;
 }
 
-Settings parseAndPlan(const std::string& spec, poplar::Graph& graph) {
+Settings parseAndPlan(const std::string& spec, XXXX-11::Graph& graph) {
     Settings settings;
     std::string version;
     std::istringstream in(spec);
@@ -97,10 +97,10 @@ extern "C" void Build_metadata(
     is_hashable = true;
 }
 
-extern "C" poplar::Tensor Build_allocator(poplar::Graph& graph,
+extern "C" XXXX-11::Tensor Build_allocator(XXXX-11::Graph& graph,
                                           std::uint32_t operand,
                                           const std::vector<size_t>& /*shape*/,
-                                          poplar::Type /*type*/,
+                                          XXXX-11::Type /*type*/,
                                           const std::string& attributes,
                                           const std::string& debugPrefix) {
     auto settings = parseAndPlan(attributes, graph);
@@ -133,16 +133,16 @@ extern "C" poplar::Tensor Build_allocator(poplar::Graph& graph,
     throw std::invalid_argument(msg.str());
 }
 
-extern "C" poplar::program::Program Build(poplar::Graph& graph,
-                                          const std::vector<poplar::Tensor>& inputs,
-                                          std::vector<poplar::Tensor>& outputs,
+extern "C" XXXX-11::program::Program Build(XXXX-11::Graph& graph,
+                                          const std::vector<XXXX-11::Tensor>& inputs,
+                                          std::vector<XXXX-11::Tensor>& outputs,
                                           const std::string& attributes,
                                           const std::string& debugPrefix) {
     auto settings = parseAndPlan(attributes, graph);
-    poplar::program::Sequence program;
+    XXXX-11::program::Sequence program;
 
     // Need to reinterpret, as GC-XLA has no uint32
-    auto indices = inputs[1].expand({2}).reinterpret(poplar::UNSIGNED_INT);
+    auto indices = inputs[1].expand({2}).reinterpret(XXXX-11::UNSIGNED_INT);
 
     if (settings.operation == Operation::Gather) {
         auto params = inputs[0];
@@ -156,7 +156,7 @@ extern "C" poplar::program::Program Build(poplar::Graph& graph,
             graph, settings.type, settings.nGroups, {settings.tableSize, settings.embeddingSize},
             {0}, {1}, settings.plan, settings.options, debugPrefix);
         popops::zero(graph, output, program);
-        auto scale = graph.addConstant(poplar::FLOAT, {}, 1.0f);
+        auto scale = graph.addConstant(XXXX-11::FLOAT, {}, 1.0f);
         graph.setTileMapping(scale, 0);
         popops::groupedMultiUpdateAdd(graph, output, data, indices, scale, {0}, {1}, program,
                                       settings.plan, settings.options, debugPrefix);

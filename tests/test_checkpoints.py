@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 import inspect
 import logging
 import os
@@ -9,7 +9,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 import tensorflow as tf
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 
 from custom_callbacks import CheckpointCallback
 
@@ -41,9 +41,9 @@ def test_checkpoint_creation():
         ds = ds.repeat()
         ds = ds.batch(micro_batch_size, drop_remainder=True)
 
-        ipu_cfg = ipu.config.IPUConfig()
+        ipu_cfg = XXXX-1.config.IPUConfig()
         ipu_cfg.auto_select_ipus = num_replicas
-        ipu_cfg.device_connection.type = ipu.utils.DeviceConnectionType.ON_DEMAND
+        ipu_cfg.device_connection.type = XXXX-1.utils.DeviceConnectionType.ON_DEMAND
         ipu_cfg.configure_ipu_system()
 
         fake_cfg = Config
@@ -63,7 +63,7 @@ def test_checkpoint_creation():
             period=checkpoint_frequency,
             total_epochs=fake_cfg.model.epochs,
         )
-        strategy = ipu.ipu_strategy.IPUStrategy()
+        strategy = XXXX-1.ipu_strategy.IPUStrategy()
         with strategy.scope():
             optimizer = tf.keras.optimizers.SGD(learning_rate=0.1)
             input_layer = tf.keras.Input(shape=1)

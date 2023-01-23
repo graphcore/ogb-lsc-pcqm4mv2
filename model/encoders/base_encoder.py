@@ -1,10 +1,10 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import tensorflow as tf
 import xpu
 from model.gnn.embedding_layers import AtomEncoder, BondEncoder
 from model.gnn.layers import MLP, Dense
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 
 
 class BaseEncoder(tf.keras.layers.Layer):

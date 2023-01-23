@@ -1,19 +1,19 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import numpy as np
 import pytest
 import tensorflow as tf
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 
 from model.gnn.aggregators import (_gather, _scatter_max, _scatter_mean, _scatter_softmax, _scatter_sqrtN, _scatter_sum)
 
 
 @pytest.mark.usefixtures("ipu_static_ops")
 def test_scatter_gather():
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     n_tests = 10
     n_nodes = 6
@@ -48,10 +48,10 @@ def test_scatter_gather():
 
 @pytest.mark.usefixtures("ipu_static_ops")
 def test_scatter_max():
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     n_tests = 10
     n_nodes = 8
@@ -72,10 +72,10 @@ def test_scatter_max():
 
 @pytest.mark.usefixtures("ipu_static_ops")
 def test_scatter_softmax():
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     n_tests = 10
     n_nodes = 8
@@ -96,10 +96,10 @@ def test_scatter_softmax():
 
 @pytest.mark.usefixtures("ipu_static_ops")
 def test_scatter_mean():
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     n_tests = 10
     n_nodes = 8
@@ -120,10 +120,10 @@ def test_scatter_mean():
 
 @pytest.mark.usefixtures("ipu_static_ops")
 def test_scatter_sqrtN():
-    config = ipu.config.IPUConfig()
+    config = XXXX-1.config.IPUConfig()
     config.auto_select_ipus = 1
-    config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-    ipu.utils.configure_ipu_system(config)
+    config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+    XXXX-1.utils.configure_ipu_system(config)
 
     n_tests = 10
     n_nodes = 8

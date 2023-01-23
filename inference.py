@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import logging
 import os
@@ -239,8 +239,8 @@ if __name__ == '__main__':
         v_dtype=str_dtype_to_tf_dtype(cfg.model.adam_v_dtype),
         clip_value=cfg.model.grad_clip_value,
         loss_scale=cfg.model.loss_scaling,
-        gradient_accumulation_factor=cfg.ipu_opts.gradient_accumulation_factor,
-        replicas=cfg.ipu_opts.replicas,
+        gradient_accumulation_factor=cfg.XXXX-12.gradient_accumulation_factor,
+        replicas=cfg.XXXX-12.replicas,
     )
     losses, loss_weights = get_loss_functions(graph_data, cfg)
     metrics = get_metrics(graph_data.denormalize, cfg)

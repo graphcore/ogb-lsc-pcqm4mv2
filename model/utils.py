@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import logging
 
@@ -43,7 +43,7 @@ def create_model(batch_generator, dataset, options, input_spec=None):
         dataset=dataset,
         dataset_name=options.dataset.dataset_name,
         weight_dtype=options.layer.weight_dtype,
-        pipeline_stages=options.ipu_opts.num_pipeline_stages,
+        pipeline_stages=options.XXXX-12.num_pipeline_stages,
         num_gaussian_kernels=options.model.num_gaussian_kernels,
         gaussian_kernel_init=(options.model.gaussian_kernel_init_low, options.model.gaussian_kernel_init_high),
         gaussian_kernel_scale=options.model.gaussian_kernel_scale,
@@ -161,7 +161,7 @@ def get_tf_dataset(preprocessed_dataset,
                                            input_spec=input_spec)
 
     batch_generator.get_averaged_global_batch_size(
-        options.model.micro_batch_size, options.ipu_opts.gradient_accumulation_factor, options.ipu_opts.replicas)
+        options.model.micro_batch_size, options.XXXX-12.gradient_accumulation_factor, options.XXXX-12.replicas)
     logging.info(f"Packing stats: {batch_generator.stats}")
     ground_truth_and_masks = batch_generator.get_ground_truth_and_masks() if not shuffle else None
     return batch_generator, ground_truth_and_masks

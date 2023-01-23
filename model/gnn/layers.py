@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import numpy as np
 import logging
@@ -6,7 +6,7 @@ import logging
 import tensorflow as tf
 from keras.layers import Activation
 from tensorflow import keras
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 
 import xpu
 from model.gnn.aggregators import GenericAggregator, gather
@@ -443,9 +443,9 @@ def _apply_activation_function(activation_function):
     if activation_function == "relu":
         act_fn = tf.keras.layers.Activation('relu')
     elif activation_function == "gelu":
-        act_fn = ipu.nn_ops.gelu
+        act_fn = XXXX-1.nn_ops.gelu
     elif activation_function == "swish":
-        act_fn = ipu.nn_ops.swish
+        act_fn = XXXX-1.nn_ops.swish
     else:
         logging.error(f"Activation function {activation_function} provided is not recognized")
         raise NotImplementedError

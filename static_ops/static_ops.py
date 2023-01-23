@@ -1,9 +1,9 @@
-# Copyright (c) 2022 Graphcore Ltd, All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd, All rights reserved.
 from pathlib import Path
 from typing import Callable
 
 import tensorflow as tf
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 
 
 def _attribute(
@@ -58,7 +58,7 @@ def grouped_gather(params: tf.Tensor, indices: tf.Tensor) -> (tf.Tensor, Callabl
         n_groups, table_size, embedding_size = map(int, _params.shape)
         _, n_lookup = map(int, _indices.shape)
 
-        (output, ) = ipu.custom_ops.precompiled_user_op(
+        (output, ) = XXXX-1.custom_ops.precompiled_user_op(
             [_params, _indices],
             library_path=str(Path(__file__).parent / "custom_grouped_gather_scatter.so"),
             attributes=_attribute(
@@ -118,7 +118,7 @@ def grouped_scatter_sum(data: tf.Tensor, indices: tf.Tensor, table_size: int) ->
     @tf.custom_gradient
     def _internal_grouped_scatter(_data, _indices):
         n_groups, n_lookup, embedding_size = map(int, _data.shape)
-        (output, ) = ipu.custom_ops.precompiled_user_op(
+        (output, ) = XXXX-1.custom_ops.precompiled_user_op(
             [_data, _indices],
             library_path=str(Path(__file__).parent / "custom_grouped_gather_scatter.so"),
             attributes=_attribute(
@@ -179,7 +179,7 @@ def grouped_scatter_max(data: tf.Tensor, indices: tf.Tensor, table_size: int,
     @tf.custom_gradient
     def _internal_grouped_scatter_max(_data, _indices):
         n_groups, n_lookup, embedding_size = map(int, _data.shape)
-        (fwd_out, ) = ipu.custom_ops.precompiled_user_op(
+        (fwd_out, ) = XXXX-1.custom_ops.precompiled_user_op(
             [_data, _indices],
             library_path=str(Path(__file__).parent / "custom_grouped_gather_scatter.so"),
             attributes=_attribute(

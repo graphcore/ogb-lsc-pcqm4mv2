@@ -1,9 +1,9 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-6 Ltd. All rights reserved.
 
 import numpy as np
 import tensorflow as tf
 import pytest
-from tensorflow.python import ipu
+from tensorflow.python import XXXX-1
 import tensorflow as tf
 from tensorflow.keras import mixed_precision
 from ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
@@ -18,10 +18,10 @@ class TestBaseEncoder:
         policy = mixed_precision.Policy('mixed_float16')
         mixed_precision.set_global_policy(policy)
 
-        config = ipu.config.IPUConfig()
+        config = XXXX-1.config.IPUConfig()
         config.auto_select_ipus = 1
-        config.device_connection.type = ipu.config.DeviceConnectionType.ON_DEMAND
-        ipu.utils.configure_ipu_system(config)
+        config.device_connection.type = XXXX-1.config.DeviceConnectionType.ON_DEMAND
+        XXXX-1.utils.configure_ipu_system(config)
         cls.inputs = {}
         cls.encoder = None
 
