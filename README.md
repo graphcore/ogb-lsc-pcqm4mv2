@@ -74,13 +74,6 @@ We have provided three configurations of our model of increasing size trained on
 | GPS++ | 44M |  16 | ~0.044 | ~0.077 | GPS_PCQ_16gps_44M.yaml | [gps++ ckpt1](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_16gps_44M.tar.gz) |
 | GPS++ trained on valid split | 44M |  16 | ~0.044 | NA | GPS_PCQ_16gps_44M.yaml | [gps++ ckpt2](https://graphcore-ogblsc-pcqm4mv2.s3.us-west-1.amazonaws.com/GPS_PCQ_16gps_44M_inc_valid.tar.gz) |
 
-## Our submission to OGB-LSC PCQM4Mv2
-
-For the OGB-LSC PCQM4Mv2 challenge submission we trained an ensemble of the GPS++ (44M) model with six adjustments to the hyperparameters to form seven different model configurations.
-
-Additionally, we trained the models on the training and validation data. The directory pcqm4mv2-cross_val_splits contains such split options and they can be used by modifying the flag `--split_mode`.
-
-In total 112 models were ensembled and achieved an MAE of 0.0719 on the test-challenge set.
 
 ## Logging and visualisation in Weights & Biases
 
