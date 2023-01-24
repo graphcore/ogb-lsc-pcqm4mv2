@@ -14,4 +14,4 @@ regex==2022.4.24
 ruyaml==0.91.0
 wandb==0.13.4
 tqdm==4.64.0
-git+https://github.com/graphcore/examples-utils@6d3b8367d5c6d2cda5a0e7849138d0ee8a8c6756#egg=examples-utils
+git+XXXX-1

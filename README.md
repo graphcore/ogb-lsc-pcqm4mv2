@@ -1,19 +1,19 @@
 # GPS++: An Optimised Hybrid GNN/Transformer for Molecular Property Prediction
 
-An optimised hybrid GNN/Transformer model for molecular property prediction using Graphcore IPUs, trained on the [PCQM4Mv2](https://arxiv.org/abs/2103.09430) dataset. The flexible hybrid model closely follows the [General, Powerful, Scalable (GPS) framework](https://arxiv.org/abs/2205.12454) and combines the benefits of both message passing and attention layers for graph-structured input data training.
+An optimised hybrid GNN/Transformer model for molecular property prediction using XXXX-1 IPUs, trained on the [PCQM4Mv2](https://arxiv.org/abs/2103.09430) dataset. The flexible hybrid model closely follows the [General, Powerful, Scalable (GPS) framework](https://arxiv.org/abs/2205.12454) and combines the benefits of both message passing and attention layers for graph-structured input data training.
 
 ## Running the model [![Gradient](https://assets.paperspace.io/img/gradient-badge.svg)](https://ipu.dev/3CGjC5E)
 
 ### Setup
 
-This model is optimised for Graphcore IPUs and requires the Graphcore's Poplar SDK to run.
+This model is optimised for XXXX-1 IPUs and requires the XXXX-1's Poplar SDK to run.
 
 Create a virtual environment and install the Poplar SDK, including the TensorFlow 2 wheels from inside the SDK directory:
 
 ```shell
 virtualenv --python python3.6 .gps_venv
 source .gps_venv/bin/activate
-source <path to the Graphcore SDK>/enable
+source <path to the XXXX-1 SDK>/enable
 pip install <path to the TensorFlow-2 wheel from the Poplar SDK>
 pip install --force-reinstall --no-deps <path to the Keras wheel from the Poplar SDK>
 pip install <path to the ipu_tensorflow_addons wheel for TensorFlow 2 from the Poplar SDK>

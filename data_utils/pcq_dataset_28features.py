@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-1 Ltd. All rights reserved.
 # Copyright (c) 2019 OGB Team
 #
 # MIT License
@@ -21,7 +21,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# This file has been modified by Graphcore Ltd.
+# This file has been modified by XXXX-1 Ltd.
 
 import logging
 import tarfile

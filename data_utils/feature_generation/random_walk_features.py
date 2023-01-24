@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-1 Ltd. All rights reserved.
 # Copyright (c) 2022 Ladislav Rampášek, Michael Galkin, Vijay Prakash Dwivedi, Dominique Beaini
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,7 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# This file has been modified by Graphcore Ltd.
+# This file has been modified by XXXX-1 Ltd.
 
 import numpy as np
 

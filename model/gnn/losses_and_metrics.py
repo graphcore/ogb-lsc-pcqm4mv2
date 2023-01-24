@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Graphcore Ltd. All rights reserved.
+# Copyright (c) 2022 XXXX-1 Ltd. All rights reserved.
 
 import tensorflow as tf
 from keras import backend
