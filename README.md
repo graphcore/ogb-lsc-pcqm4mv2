@@ -6,14 +6,14 @@ An optimised hybrid GNN/Transformer model for molecular property prediction usin
 
 ### Setup
 
-This model is optimised for XXXX-1 IPUs and requires the XXXX-1's Poplar SDK to run.
+This model is optimised for Graphcore IPUs and requires the Graphcore's Poplar SDK to run.
 
 Create a virtual environment and install the Poplar SDK, including the TensorFlow 2 wheels from inside the SDK directory:
 
 ```shell
 virtualenv --python python3.6 .gps_venv
 source .gps_venv/bin/activate
-source <path to the XXXX-1 SDK>/enable
+source <path to the Graphcore SDK>/enable
 pip install <path to the TensorFlow-2 wheel from the Poplar SDK>
 pip install --force-reinstall --no-deps <path to the Keras wheel from the Poplar SDK>
 pip install <path to the ipu_tensorflow_addons wheel for TensorFlow 2 from the Poplar SDK>
