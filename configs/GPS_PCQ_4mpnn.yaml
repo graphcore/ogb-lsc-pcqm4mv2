@@ -1,10 +1,10 @@
 
 model:
-  micro_batch_size: 6
-  target_total_batch_size: 900
-  n_nodes_per_pack: 60
-  n_edges_per_pack: 120
-  n_graphs_per_pack: 8
+  micro_batch_size: 1
+  target_total_batch_size: 10
+  n_nodes_per_pack: 45
+  n_edges_per_pack: 90
+  n_graphs_per_pack: 6
 
   layer_specs: [MPNN+FFN]
   layer_repeats: [4]
@@ -48,10 +48,10 @@ model:
   learning_rate_schedule: linear
   loss_scaling: 1024
   dtype: mixed_float16
-  use_noisy_nodes: true
+  use_noisy_nodes: false
   noisy_nodes_noise_prob: 0.01
   noisy_nodes_weight: 1.2
-  use_noisy_edges: true
+  use_noisy_edges: false
   noisy_edges_noise_prob: 0.01
   noisy_edges_weight: 1.2
 
@@ -115,7 +115,7 @@ wandb_entity: ogb-lsc-comp
 wandb_project: multitask-gnn
 checkpoint_every_n_epochs: 1000
 ipu_opts:
-  replicas: 4
+  replicas: 1
   recompute: true
   offload_optimizer_state: false
   RTS: false
