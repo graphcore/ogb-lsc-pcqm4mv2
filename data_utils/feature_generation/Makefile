@@ -1,5 +1,6 @@
 CC = g++
-PY3 = $(shell python3 -c 'import sys; print("python" + str(sys.version_info.major) + "." + str(sys.version_info.minor))')
+PY3_INC = $(shell python3 -c 'import sys; print("/usr/include/python" + str(sys.version_info.major) + "." + str(sys.version_info.minor))')
+NP_INC = $(shell python3 -c "import numpy; print(numpy.__path__[0])")/core/include/
 
 all: path_algorithms.so
 
@@ -8,8 +9,8 @@ path_algorithms.so:
 	$(CC) path_algorithms.c \
 		-shared \
 		-fPIC \
-		-I/usr/include/$(PY3) \
-		-I/usr/local/lib/$(PY3)/dist-packages/numpy/core/include/ \
+		-I$(PY3_INC) \
+		-I$(NP_INC) \
 		-D NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION \
 		-o path_algorithms.so
 	rm path_algorithms.c
