@@ -1,7 +1,7 @@
 
 model:
-  micro_batch_size: 6
-  target_total_batch_size: 900
+  micro_batch_size: 2 # use 6 for raining, 2 for benchmarking
+  target_total_batch_size: 800
   n_nodes_per_pack: 60
   n_edges_per_pack: 120
   n_graphs_per_pack: 8
@@ -110,7 +110,7 @@ wandb_entity: ogb-lsc-comp
 wandb_project: multitask-gnn
 checkpoint_every_n_epochs: 1000
 ipu_opts:
-  replicas: 4
+  replicas: 1
   recompute: true
   offload_optimizer_state: false
   RTS: false
