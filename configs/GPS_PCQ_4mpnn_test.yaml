@@ -1,7 +1,7 @@
 
 model:
-  micro_batch_size: 1
-  target_total_batch_size: 800
+  micro_batch_size: 6
+  target_total_batch_size: 900
   n_nodes_per_pack: 60
   n_edges_per_pack: 120
   n_graphs_per_pack: 8
@@ -24,7 +24,7 @@ model:
   ffn_dim: 1024
   n_attn_heads: 32
   ffn_dropout_rate: 0.0
-  graph_dropout_rate: 0.0 # stochastic depth
+  graph_dropout_rate: 0.3 # stochastic depth
   attention_dropout_rate: 0.3
   gnn_output_dropout_rate: 0.0
   mhsa_output_dropout_rate: 0.0
@@ -37,8 +37,8 @@ model:
   encoder_act_fn: relu
   encoder_prenorm: true
   encoder_dropout: 0.18
-  n_embedding_channels: 64 # QQQ
-  epochs: 10
+  n_embedding_channels: 64
+  epochs: 100
   opt: adam
   adam_m_dtype: float16
   adam_v_dtype: float32
@@ -73,21 +73,21 @@ dataset:
   dataset_name: pcqm4mv2_conformers_28features
   chemical_node_features: ['atomic_num', 'degree', 'possible_formal_charge', 'possible_numH',
                            'possible_number_radical_e', 'possible_is_aromatic', 'possible_is_in_ring',
-                           'num_chiral_centers'] # 8 + 2(groups and periods)
+                           'num_chiral_centers']
   chemical_edge_features: ['possible_bond_type', 'possible_bond_stereo', 'possible_is_in_ring']
   do_not_use_atomic_number: false
   trim_chemical_features: true
   use_periods_and_groups: true
   split_mode: original
-  cache_path: /scratch_ai-datasets/paperspace/ogb_lsc_pcqm4mv2/datasets/
+  cache_path: datasets
   packing_strategy: streaming
-  normalize_labels: true ### QQQ
+  normalize_labels: true
   generated_data: false
-  use_distance_sum_feature: true ### QQQ
+  use_distance_sum_feature: false
   features:
     chemical_features: {}
     senders_receivers:
-      bidirectional: true ### QQQ
+      bidirectional: true
     graph_idxs: {}
     laplacian_eig:
       max_freqs: 8
@@ -95,14 +95,9 @@ dataset:
       remove_first: true
     random_walk:
       k_steps: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    # shortest_path_distances: {}
-    # centrality_encoding: {}
-    # atom_distance: {}
-    # bond_lengths: {}
-  # input_masking_groups: [ [ "shortest_path_distances" ],
-  #                        [ "atom_distances","ogb_bond_lengths"],
-  #                        [ "shortest_path_distances","atom_distances","ogb_bond_lengths" ] ]
-  # input_masking_weights: [ 1., 3., 1. ]
+  # input_masking_groups: [ [ "atom_distances",],
+  #                        [ "ogb_bond_lengths"] ]
+  # input_masking_weights: [ 1., 1. ]
 inputs: [ "node_feat", "edge_feat", "receivers", "senders", "node_graph_idx", "edge_graph_idx",
             "lap_eig_vals","lap_eig_vecs", "random_walk_landing_probs"]
 do_training: true
@@ -115,7 +110,7 @@ wandb_entity: ogb-lsc-comp
 wandb_project: multitask-gnn
 checkpoint_every_n_epochs: 1000
 ipu_opts:
-  replicas: 1
+  replicas: 4
   recompute: true
   offload_optimizer_state: false
   RTS: false

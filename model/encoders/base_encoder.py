@@ -193,7 +193,7 @@ class BaseEncoder(tf.keras.layers.Layer):
                     lap_eig_vec_encodings = self.lap_eig_vec_dropout(lap_eig_vec_encodings)
                 all_feature_encodings[feature_name] = lap_eig_vec_encodings
             elif feature_name == "lap_eig_vals":
-                feature = tf.squeeze(feature, axis=1) # we only need to squeeze the first dim [bs, 1, nodes, dim]
+                feature = tf.squeeze(feature, axis=-1) # we only need to squeeze the first dim [bs, 1, nodes, dim]
                 lap_eig_val_encodings = self.lap_eig_val_encodings(feature, mask=node_mask)
                 if hasattr(self, "lap_eig_val_dropout"):
                     lap_eig_val_encodings = self.lap_eig_val_dropout(lap_eig_val_encodings)
