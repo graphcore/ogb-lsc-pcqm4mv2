@@ -9,7 +9,7 @@ path_algorithms.so:
 		-shared \
 		-fPIC \
 		-I/usr/include/$(PY3) \
-		-I/usr/local/lib/$(PY3)/dist-packages/numpy/core/include/ \
+		-I/nethome/zhiyil/.venv/ogb_tf2/lib/$(PY3)/site-packages/numpy/core/include/ \
 		-D NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION \
 		-o path_algorithms.so
 	rm path_algorithms.c
